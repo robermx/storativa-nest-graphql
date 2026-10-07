@@ -1,0 +1,30 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Storativa {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+type Query {
+  storativas: [Storativa!]!
+  storativa(id: Int!): Storativa!
+}
+
+type Mutation {
+  createStorativa(createStorativaInput: CreateStorativaInput!): Storativa!
+  updateStorativa(updateStorativaInput: UpdateStorativaInput!): Storativa!
+  removeStorativa(id: Int!): Storativa!
+}
+
+input CreateStorativaInput {
+  """Example field (placeholder)"""
+  exampleField: Int!
+}
+
+input UpdateStorativaInput {
+  """Example field (placeholder)"""
+  exampleField: Int
+  id: Int!
+}
