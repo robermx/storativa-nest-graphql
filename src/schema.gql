@@ -3,8 +3,12 @@
 # ------------------------------------------------------
 
 type Storativa {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  title: String!
+  author: String!
+  centralIdea: String!
+  status: Int!
+  timeToComplete: Int!
+  initialBasedDate: String!
 }
 
 type Query {
