@@ -1,18 +1,18 @@
 import { Module } from '@nestjs/common';
-import { GraphQLModule } from '@nestjs/graphql';
-import { ApolloDriver, type ApolloDriverConfig } from '@nestjs/apollo';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { GraphQLModule } from '@nestjs/graphql';
+import { MongooseModule } from '@nestjs/mongoose';
+import { ApolloDriver, type ApolloDriverConfig } from '@nestjs/apollo';
 import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 import { join } from 'path';
+
 import { StorativasModule } from './storativas/storativas.module.js';
 import { envConfigurator } from './config/env.config.js';
 import { zodValidationSchema } from './config/joi.validation.js';
-import { MongooseModule } from '@nestjs/mongoose';
-
 
 @Module({
   imports: [
-     ConfigModule.forRoot({
+    ConfigModule.forRoot({
       isGlobal: true,
       load: [envConfigurator],
       validationSchema: zodValidationSchema,

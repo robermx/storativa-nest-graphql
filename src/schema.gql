@@ -3,32 +3,51 @@
 # ------------------------------------------------------
 
 type Storativa {
+  id: ID!
+  createdAt: DateTime!
+  updatedAt: DateTime!
   title: String!
   author: String!
   centralIdea: String!
+  basedDate: String!
+  language: String!
   status: Int!
   timeToComplete: Int!
-  initialBasedDate: String!
 }
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
 
 type Query {
   storativas: [Storativa!]!
-  storativa(id: Int!): Storativa!
+  storativa(id: ID!): Storativa!
 }
 
 type Mutation {
   createStorativa(createStorativaInput: CreateStorativaInput!): Storativa!
   updateStorativa(updateStorativaInput: UpdateStorativaInput!): Storativa!
-  removeStorativa(id: Int!): Storativa!
+  removeStorativa(id: ID!): Storativa!
 }
 
 input CreateStorativaInput {
-  """Example field (placeholder)"""
-  exampleField: Int!
+  title: String!
+  author: String!
+  centralIdea: String!
+  basedDate: String!
+  language: String!
+  status: Int!
+  timeToComplete: Int!
 }
 
 input UpdateStorativaInput {
-  """Example field (placeholder)"""
-  exampleField: Int
-  id: Int!
+  title: String
+  author: String
+  centralIdea: String
+  basedDate: String
+  language: String
+  status: Int
+  timeToComplete: Int
+  id: ID!
 }

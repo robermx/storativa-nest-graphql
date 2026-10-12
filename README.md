@@ -29,8 +29,9 @@ Fill in the `.env` file created from `.env.template`:
 
 ```env
 NODE_ENV=local
-MONGODB_DATABASE=storativa
-MONGODB_PORT=2719
+MONGODB_DATABASE=storativa-db
+MONGODB_PORT=2717
+MONGODB_URI=mongodb://localhost:27017
 ```
 
 ## Commands

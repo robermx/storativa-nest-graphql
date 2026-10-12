@@ -2,8 +2,6 @@ services:
   mongo:
     image: mongo:9.0.2
     restart: always
-    volumes:
-      - ./mongo-data:/data/db
     environment:
       - MONGODB_DATABASE=${MONGODB_DATABASE}
     ports:
