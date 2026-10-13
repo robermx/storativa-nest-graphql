@@ -9,6 +9,7 @@ import { join } from 'path';
 import { StorativasModule } from './storativas/storativas.module.js';
 import { envConfigurator } from './config/env.config.js';
 import { zodValidationSchema } from './config/joi.validation.js';
+import { UsersModule } from './users/users.module.js';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { zodValidationSchema } from './config/joi.validation.js';
       plugins: [ApolloServerPluginLandingPageLocalDefault()],
     }),
     StorativasModule,
+    UsersModule,
   ],
   controllers: [],
   providers: [],

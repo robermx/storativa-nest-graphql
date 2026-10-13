@@ -10,26 +10,26 @@ export class StorativasResolver {
   constructor(private readonly storativasService: StorativasService) {}
 
   @Mutation(() => Storativa)
-  async createStorativa(
+  createStorativa(
     @Args('createStorativaInput') createStorativaInput: CreateStorativaInput,
   ): Promise<Storativa> {
     return this.storativasService.create(createStorativaInput);
   }
 
   @Query(() => [Storativa], { name: 'storativas' })
-  async findAll(): Promise<Storativa[]> {
+  findAll(): Promise<Storativa[]> {
     return this.storativasService.findAll();
   }
 
   @Query(() => Storativa, { name: 'storativa' })
-  async findOne(
+  findOne(
     @Args('id', { type: () => ID }, ParseObjectIdPipe) id: string,
   ): Promise<Storativa> {
     return this.storativasService.findOne(id);
   }
 
   @Mutation(() => Storativa)
-  async updateStorativa(
+  updateStorativa(
     @Args('updateStorativaInput') updateStorativaInput: UpdateStorativaInput,
   ): Promise<Storativa> {
     return this.storativasService.update(
@@ -39,7 +39,7 @@ export class StorativasResolver {
   }
 
   @Mutation(() => Storativa)
-  async removeStorativa(
+  removeStorativa(
     @Args('id', { type: () => ID }, ParseObjectIdPipe) id: string,
   ): Promise<Storativa> {
     return this.storativasService.remove(id);
