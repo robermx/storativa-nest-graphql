@@ -30,6 +30,11 @@ type User {
   isActive: Boolean!
 }
 
+type AuthResponse {
+  token: String!
+  user: User!
+}
+
 type Query {
   storativas: [Storativa!]!
   storativa(id: ID!): Storativa!
@@ -42,6 +47,8 @@ type Mutation {
   updateStorativa(updateStorativaInput: UpdateStorativaInput!): Storativa!
   removeStorativa(id: ID!): Storativa!
   blockUser(id: ID!): User!
+  signup(signupInput: SignupInput!): AuthResponse!
+  signIn(signinInput: SigninInput!): AuthResponse!
 }
 
 input CreateStorativaInput {
@@ -63,4 +70,15 @@ input UpdateStorativaInput {
   status: Int
   timeToComplete: Int
   id: ID!
+}
+
+input SignupInput {
+  fullName: String!
+  email: String!
+  password: String!
+}
+
+input SigninInput {
+  email: String!
+  password: String!
 }

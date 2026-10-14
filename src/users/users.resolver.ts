@@ -23,7 +23,8 @@ export class UsersResolver {
   findOne(
     @Args('id', { type: () => ID }, ParseObjectIdPipe) id: string,
   ): Promise<User> {
-    return this.usersService.findOne(id);
+    // TODO: implement this
+    throw new Error('Not implemented yet')
   }
 
   // @Mutation(() => User)

@@ -10,6 +10,7 @@ import { StorativasModule } from './storativas/storativas.module.js';
 import { envConfigurator } from './config/env.config.js';
 import { zodValidationSchema } from './config/joi.validation.js';
 import { UsersModule } from './users/users.module.js';
+import { AuthModule } from './auth/auth.module.js';
 
 @Module({
   imports: [
@@ -34,6 +35,7 @@ import { UsersModule } from './users/users.module.js';
     }),
     StorativasModule,
     UsersModule,
+    AuthModule,
   ],
   controllers: [],
   providers: [],
