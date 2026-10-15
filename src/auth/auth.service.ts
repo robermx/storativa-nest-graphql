@@ -19,7 +19,7 @@ export class AuthService {
   async signin({ email, password }: SigninInput): Promise<AuthResponse> {
     // TODO: create JWT
     const token = 'ABDq23';
-    const user = await this.userService.findOneByEmail(email);
+    const user = await this.userService.findOneByEmailForSignin(email);
 
     if (!bcrypt.compareSync(password, user.password))
       throw new BadRequestException('Invalid credentials');

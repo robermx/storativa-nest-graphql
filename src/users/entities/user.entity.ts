@@ -2,6 +2,8 @@ import { ObjectType, Field, ID } from '@nestjs/graphql';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
+export type Role = 'user' | 'superuser' | 'admin';
+
 @ObjectType()
 @Schema({ timestamps: true })
 export class User extends Document {
@@ -38,10 +40,20 @@ export class User extends Document {
   // @Field(() => String)
   password!: string;
 
+  // emailVerified: bool
+  @Prop({ type: Boolean, required: true, default: false })
+  @Field(() => Boolean)
+  emailVerified!: boolean;
+
   // roles: ['admin', 'superUser', 'user']
-  @Prop({ type: 'array', array: true, default: ['user'] })
+  @Prop({
+    type: [String],
+    required: true,
+    default: ['user'],
+    enum: ['user', 'superuser', 'admin'],
+  })
   @Field(() => [String])
-  roles!: string[];
+  roles!: Role[];
 
   // isActive: bool
   @Prop({ type: 'boolean', required: true, default: true })
@@ -49,4 +61,4 @@ export class User extends Document {
   isActive!: boolean;
 }
 
-export const UserSchema = SchemaFactory.createForClass(User)
+export const UserSchema = SchemaFactory.createForClass(User);

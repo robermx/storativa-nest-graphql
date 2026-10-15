@@ -30,9 +30,9 @@ export class UsersService {
   async findAll(): Promise<User[]> {
     return [];
   }
-  
-  /** Exclusive method - Just for login */ 
-  async findOneByEmail(email: string): Promise<User> {
+
+  /** Exclusive Method - Just for signin */
+  async findOneByEmailForSignin(email: string): Promise<User> {
     const user = await this.userModel.findOne({ email }).exec();
     if (!user)
       /** if the email was not founded  */
