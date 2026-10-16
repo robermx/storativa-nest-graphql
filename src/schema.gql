@@ -41,6 +41,7 @@ type Query {
   storativa(id: ID!): Storativa!
   users: [User!]!
   user(id: ID!): User!
+  revalidateToken: AuthResponse!
 }
 
 type Mutation {

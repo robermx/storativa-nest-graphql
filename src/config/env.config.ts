@@ -1,31 +1,33 @@
+import { NotFoundException } from "@nestjs/common";
+
 export const envConfigurator = () => {
-  const nodeEnv = process.env.NODE_ENV || 'local';
+  const nodeEnv = process.env.NODE_ENV;
   const port = process.env.PORT;
   const mongoDbDatabase = process.env.MONGODB_DATABASE;
   const mongoPort = process.env.MONGODB_PORT;
-  const jwtSecret = process.env.JWT_SECRET;
   const mongoDbUri = process.env.MONGODB_URI
+  const jwtSecret = process.env.JWT_SECRET;
 
   if (!nodeEnv) {
-    throw new Error('NODE_ENV environment variable is not set');
+    throw new NotFoundException('NODE_ENV environment variable is not set');
   }
 
   if (!port) {
-    throw new Error('PORT environment variable is not set');
+    throw new NotFoundException('PORT environment variable is not set');
   }
 
   if (!mongoDbDatabase) {
-    throw new Error('MONGODB_DATABASE environment variable is not set');
+    throw new NotFoundException('MONGODB_DATABASE environment variable is not set');
   }
   if (!mongoPort) {
-    throw new Error('MONGODB_PORT environment variable is not set');
+    throw new NotFoundException('MONGODB_PORT environment variable is not set');
   }
   if (!mongoDbUri) {
-    throw new Error('MONGODB_URI environment variable is not set');
+    throw new NotFoundException('MONGODB_URI environment variable is not set');
   }
 
   if (!jwtSecret) {
-    throw new Error('JWT_SECRET environment variable is not set');
+    throw new NotFoundException('JWT_SECRET environment variable is not set');
   }
 
   return {

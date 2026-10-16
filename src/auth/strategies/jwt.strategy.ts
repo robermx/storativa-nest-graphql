@@ -1,23 +1,29 @@
-import { ExtractJwt, Strategy } from 'passport-jwt';
-import { PassportStrategy } from '@nestjs/passport';
-import { Injectable, NotFoundException, UnauthorizedException } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { PassportStrategy } from '@nestjs/passport';
+import { ExtractJwt, Strategy } from 'passport-jwt';
+
 import { User } from '../../users/entities/user.entity.js';
+import { JwtPayload } from '../interfaces/jwt-payload.interface.js';
+import { AuthService } from '../auth.service.js';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor(configService: ConfigService) {
-    const jwtSecret = configService.get<string>('JWT_SECRET');
-    if (!jwtSecret) throw new NotFoundException('JWT_SECRET environment variable not found')
-      super({
-        jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-        ignoreExpiration: false,
-        secretOrKey: jwtSecret,
-      });
+  constructor(
+    private readonly authService: AuthService,
+    configService: ConfigService,
+  ) {
+    super({
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      ignoreExpiration: false,
+      secretOrKey: configService.getOrThrow<string>('JWT_SECRET'),
+    });
   }
 
-  async validate(payload: any): Promise<User> {
-    console.log({ payload });
-    throw new UnauthorizedException('Unauthorized token :(');
+  async validate(payload: JwtPayload): Promise<User> {
+    // this id comes from header Authorization - Bearer JWT
+    const { id } = payload;
+    const user = await this.authService.validateUser(id);
+    return user;
   }
 }

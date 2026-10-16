@@ -1,4 +1,8 @@
-import { BadRequestException, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import bcrypt from 'bcryptjs';
@@ -39,6 +43,12 @@ export class UsersService {
       // throw new NotFoundException(`User with email: ${email} not found`);
 
       throw new BadRequestException('Invalid credentials');
+    return user;
+  }
+
+  async findOneById(id: string): Promise<User> {
+    const user = await this.userModel.findById({ _id: id }).select('-password').exec();
+    if (!user) throw new NotFoundException(`User with id: ${id} not found`);
     return user;
   }
 
