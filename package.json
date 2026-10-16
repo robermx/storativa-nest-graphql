@@ -1,6 +1,6 @@
 {
   "name": "storativa-nest-graphql",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "GraphQL API for Storativa, built with NestJS, MongoDB, and TypeScript.",
   "author": "Roberto Arenas",
   "private": true,

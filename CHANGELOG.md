@@ -1,5 +1,18 @@
 # Changelog
 
+# [0.2.0](https://github.com/robermx/storativa-nest-graphql/compare/v0.1.0...v0.2.0) (2026-10-16)
+
+### Bug Fixes
+
+* docker mongo db config ([149aca7](https://github.com/robermx/storativa-nest-graphql/commit/149aca775180ee36eb5fdcd2459623e23322b4f9))
+* update user properties ([17de939](https://github.com/robermx/storativa-nest-graphql/commit/17de939aee3c696cebea79729c77fe0d5283df09))
+
+### Features
+
+* implementing jwt config ([47d79d3](https://github.com/robermx/storativa-nest-graphql/commit/47d79d3e6c1fd9a4e449b70fda745b3ec17c7387))
+* integrating auth resources with users ([1950259](https://github.com/robermx/storativa-nest-graphql/commit/1950259ed5c209aaea690c4dbc0e7700e6e732f6))
+* user mongoose schema added ([856f466](https://github.com/robermx/storativa-nest-graphql/commit/856f46626915d1141721478f84f6ba4602f93d70))
+
 # 0.1.0 (2026-10-12)
 
 ### Features
