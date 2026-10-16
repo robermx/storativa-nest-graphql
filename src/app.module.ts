@@ -22,10 +22,14 @@ import { AuthModule } from './auth/auth.module.js';
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: (configService: ConfigService) => ({
-        uri: configService.get<string>('MONGODB_URI'),
-        dbName: configService.get<string>('MONGODB_DATABASE'),
-      }),
+      useFactory: (configService: ConfigService) => {
+        const uri = configService.get<string>('MONGODB_URI');
+        const port = configService.get<string>('MONGODB_PORT');
+        return {
+          uri: `${uri}:${port}`,
+          dbName: configService.get<string>('MONGODB_DATABASE'),
+        };
+      },
     }),
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,

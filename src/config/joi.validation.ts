@@ -8,4 +8,5 @@ export const zodValidationSchema = z.object({
   MONGODB_DATABASE: z.string(),
   MONGODB_PORT: z.string(),
   MONGODB_URI: z.string(),
+  JWT_SECRET: z.string()
 });

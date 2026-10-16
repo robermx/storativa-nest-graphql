@@ -3,7 +3,8 @@ export const envConfigurator = () => {
   const port = process.env.PORT;
   const mongoDbDatabase = process.env.MONGODB_DATABASE;
   const mongoPort = process.env.MONGODB_PORT;
-  const mongoDbUri = process.env.MONGODB_URI;
+  const jwtSecret = process.env.JWT_SECRET;
+  const mongoDbUri = process.env.MONGODB_URI
 
   if (!nodeEnv) {
     throw new Error('NODE_ENV environment variable is not set');
@@ -23,11 +24,16 @@ export const envConfigurator = () => {
     throw new Error('MONGODB_URI environment variable is not set');
   }
 
+  if (!jwtSecret) {
+    throw new Error('JWT_SECRET environment variable is not set');
+  }
+
   return {
     NODE_ENV: nodeEnv,
     PORT: parseInt(port, 10),
     MONGODB_DATABASE: mongoDbDatabase,
     MONGODB_PORT: parseInt(mongoPort, 10),
     MONGODB_URI: mongoDbUri,
+    JWT_SECRET: jwtSecret,
   };
 };
