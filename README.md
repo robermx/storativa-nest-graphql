@@ -29,9 +29,11 @@ Fill in the `.env` file created from `.env.template`:
 
 ```env
 NODE_ENV=local
+PORT=3000
 MONGODB_DATABASE=storativa-db
-MONGODB_PORT=2717
-MONGODB_URI=mongodb://localhost:27017
+MONGODB_PORT=27019
+MONGODB_URI=mongodb://localhost
+JWT_SECRET=AddASecretKeyForJWTSign
 ```
 
 ## Commands
@@ -42,4 +44,5 @@ pnpm start:dev      # starts the API in watch mode
 pnpm start:debug    # watch mode with the Node.js inspector
 pnpm build          # builds to dist/
 pnpm start:prod     # runs dist/main
+pnpm release        # runs release-it
 ```
